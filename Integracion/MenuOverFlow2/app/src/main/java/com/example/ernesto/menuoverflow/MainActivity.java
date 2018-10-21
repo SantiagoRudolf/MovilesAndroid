@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_ejercicio2);
     }
 
     //Método para mostrar y ocultar el menú
@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(opcion2);
             Toast.makeText(this, "Opción 2", Toast.LENGTH_SHORT).show();
         }else if(id == R.id.item3){
+            Intent opcion3 = new Intent(this, ejercicio3.class);
+            startActivity(opcion3);
             Toast.makeText(this, "Opción 3", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);

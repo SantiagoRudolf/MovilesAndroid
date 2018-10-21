@@ -53,12 +53,16 @@ public class ejercicio1 extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.item1){
+            Intent opcion1 = new Intent(this, ejercicio1.class);
+            startActivity(opcion1);
             Toast.makeText(this, "Opción 1", Toast.LENGTH_SHORT).show();
         } else if(id == R.id.item2){
             Intent opcion2 = new Intent(this, ejercicio2.class);
             startActivity(opcion2);
             Toast.makeText(this, "Opción 2", Toast.LENGTH_SHORT).show();
         }else if(id == R.id.item3){
+            Intent opcion3 = new Intent(this, ejercicio3.class);
+            startActivity(opcion3);
             Toast.makeText(this, "Opción 3", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
