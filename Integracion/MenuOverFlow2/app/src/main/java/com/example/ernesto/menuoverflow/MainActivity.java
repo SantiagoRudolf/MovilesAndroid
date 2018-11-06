@@ -10,13 +10,44 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ejercicio2);
+        setContentView(R.layout.activity_main);
+
+        //Les voy a colocar las cantidades de cada uno
+        PieChart pieChart = (PieChart) findViewById(R.id.chart);
+        ArrayList <Entry> entries = new ArrayList<>();//Entry es el que recibe los parametros para graficar, tamaño y posicion
+        entries.add(new Entry(4f,0));
+        entries.add(new Entry(6f,1));
+        entries.add(new Entry(8f,2));
+        entries.add(new Entry(10f,3));
+
+        PieDataSet dataSet = new PieDataSet(entries, "Datos");
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+
+        ArrayList<String> labels = new ArrayList<>();
+        labels.add("Gimnasio");
+        labels.add("Cross Fit");
+        labels.add("Yoga");
+        labels.add("Boxeo");
+
+        PieData data = new PieData(labels, dataSet); //coloco la seccion y los colores
+        pieChart.setData(data);
+        pieChart.setDescription("Grafica de Secciones");//descripcion
+        pieChart.animateY(3000);//animacion
     }
 
     //Método para mostrar y ocultar el menú

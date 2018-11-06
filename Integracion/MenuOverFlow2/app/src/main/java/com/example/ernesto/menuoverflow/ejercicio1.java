@@ -17,7 +17,7 @@ public class ejercicio1 extends AppCompatActivity {
     private ListView lv1;
     private TextView tv1;
 
-    private String nombres [] = {"Hamburguesa", "manzana" , "pechuga de pollo", "papas fritas","dsfsdfdf","ddf", "pechuga de pollo", "papas fritas"};
+    private String nombres [] = {"Hamburguesa", "manzana" , "pechuga de pollo", "papas fritas","vacio","zapallo", "banana", "tomate"};
     private String calorias [] = {"230","52","75","150","43","75","150","43"};
     private String HDC [] = {"0.5%","5.2%","0.75%","1.5%","1.6%","0.75%","1.5%","1.6%"};
     private String proteinas [] = {"14%","12%","7.5%","15%","56%","7.5%","15%","56%"};
@@ -37,7 +37,7 @@ public class ejercicio1 extends AppCompatActivity {
         lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
-                tv1.setText("Las comida es:" + lv1.getItemAtPosition(i) + "tiene" + calorias[i] + "calorias," + HDC[i] + "Hidratos de Carbono, " + proteinas[i] +  "grasas " +grasas[i]);
+                tv1.setText("Las comida es: " + lv1.getItemAtPosition(i) + " tiene " + calorias[i] + " calorias, " + HDC[i] + " Hidratos de Carbono, " + proteinas[i] +  " grasas " +grasas[i]);
             }
         });
     }
