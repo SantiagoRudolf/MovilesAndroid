@@ -27,27 +27,47 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Les voy a colocar las cantidades de cada uno
-        PieChart pieChart = (PieChart) findViewById(R.id.chart);
-        ArrayList <Entry> entries = new ArrayList<>();//Entry es el que recibe los parametros para graficar, tamaño y posicion
-        entries.add(new Entry(4f,0));
-        entries.add(new Entry(6f,1));
-        entries.add(new Entry(8f,2));
-        entries.add(new Entry(10f,3));
+        String aprobacion ="0";
+        String aprobacion2 = getIntent().getStringExtra("aprobacion");
 
-        PieDataSet dataSet = new PieDataSet(entries, "Datos");
-        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        if(aprobacion2 == null) {
 
-        ArrayList<String> labels = new ArrayList<>();
-        labels.add("Gimnasio");
-        labels.add("Cross Fit");
-        labels.add("Yoga");
-        labels.add("Boxeo");
 
-        PieData data = new PieData(labels, dataSet); //coloco la seccion y los colores
-        pieChart.setData(data);
-        pieChart.setDescription("Grafica de Secciones");//descripcion
-        pieChart.animateY(3000);//animacion
+            //Les voy a colocar las cantidades de cada uno
+            PieChart pieChart = (PieChart) findViewById(R.id.chart);
+            ArrayList <Entry> entries = new ArrayList<>();//Entry es el que recibe los parametros para graficar, tamaño y posicion
+            entries.add(new Entry(4f,0));
+            entries.add(new Entry(6f,1));
+            entries.add(new Entry(8f,2));
+            entries.add(new Entry(10f,3));
+
+            PieDataSet dataSet = new PieDataSet(entries, "Datos");
+            dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+
+            ArrayList<String> labels = new ArrayList<>();
+            labels.add("Gimnasio");
+            labels.add("Cross Fit");
+            labels.add("Yoga");
+            labels.add("Boxeo");
+
+            PieData data = new PieData(labels, dataSet); //coloco la seccion y los colores
+            pieChart.setData(data);
+            pieChart.setDescription("Grafica de Secciones");//descripcion
+            pieChart.animateY(3000);//animacion
+        }else if(aprobacion2 != null ){
+            ArrayList<String> labels = (ArrayList<String>) getIntent().getSerializableExtra("labels");
+            ArrayList<Entry> entries = (ArrayList<Entry>) getIntent().getSerializableExtra("entries");
+            PieChart pieChart = (PieChart) findViewById(R.id.chart);
+            PieDataSet dataSet = new PieDataSet(entries, "Datos");
+            dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+
+            PieData data = new PieData(labels, dataSet); //coloco la seccion y los colores
+            pieChart.setData(data);
+            pieChart.setDescription("Grafica de Secciones");//descripcion
+            pieChart.animateY(3000);//animacion
+            }
+
+
     }
 
     //Método para mostrar y ocultar el menú

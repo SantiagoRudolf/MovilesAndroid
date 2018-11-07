@@ -8,97 +8,29 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
 
 public class ejercicio3 extends AppCompatActivity {
 
-    WebView web;
-    String url1 = "https://www.nutrinfo.com/";
-    String url2 = "http://www.nutricion.org/";
-    String url3 = "https://www.dietascormillot.com/";
-    String url4 = "http://renhyd.org/index.php/renhyd";
+    private TextView textv1;
 
+    ArrayList<Entry> entries = new ArrayList<>();//Entry es el que recibe los parametros para graficar, tamaño y posicion
+    ArrayList<String> labels = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-
+         textv1 = (TextView) findViewById(R.id.textv1);
             setContentView(R.layout.activity_ejercicio3);
-            web = findViewById(R.id.webView);
-            web.setWebViewClient(new WebViewClient());
-            web.getSettings().setJavaScriptEnabled(true);
 
-            web.getSettings().setLoadWithOverviewMode(true);
-            web.getSettings().setUseWideViewPort(true);
-            web.getSettings().setSupportZoom(true);
-            web.getSettings().setBuiltInZoomControls(true);
-            web.getSettings().setDisplayZoomControls(false);
-            web.setScrollBarStyle(web.SCROLLBARS_OUTSIDE_OVERLAY);
-            web.setScrollbarFadingEnabled(false);
-
-            web.loadUrl(url3);
     }
 
-    //Metodos de redireccion
-    public void pagina1(View view){
-        web = findViewById(R.id.webView);
-        web.setWebViewClient(new WebViewClient());
-        web.getSettings().setJavaScriptEnabled(true);
-
-        web.getSettings().setLoadWithOverviewMode(true);
-        web.getSettings().setUseWideViewPort(true);
-        web.getSettings().setSupportZoom(true);
-        web.getSettings().setBuiltInZoomControls(true);
-        web.getSettings().setDisplayZoomControls(false);
-        web.setScrollBarStyle(web.SCROLLBARS_OUTSIDE_OVERLAY);
-        web.setScrollbarFadingEnabled(false);
-
-        web.loadUrl(url1);
-    }
-    public void pagina2(View view){
-        web = findViewById(R.id.webView);
-        web.setWebViewClient(new WebViewClient());
-        web.getSettings().setJavaScriptEnabled(true);
-
-        web.getSettings().setLoadWithOverviewMode(true);
-        web.getSettings().setUseWideViewPort(true);
-        web.getSettings().setSupportZoom(true);
-        web.getSettings().setBuiltInZoomControls(true);
-        web.getSettings().setDisplayZoomControls(false);
-        web.setScrollBarStyle(web.SCROLLBARS_OUTSIDE_OVERLAY);
-        web.setScrollbarFadingEnabled(false);
-
-        web.loadUrl(url2);
-    }
-    public void pagina3(View view){
-        web = findViewById(R.id.webView);
-        web.setWebViewClient(new WebViewClient());
-        web.getSettings().setJavaScriptEnabled(true);
-
-        web.getSettings().setLoadWithOverviewMode(true);
-        web.getSettings().setUseWideViewPort(true);
-        web.getSettings().setSupportZoom(true);
-        web.getSettings().setBuiltInZoomControls(true);
-        web.getSettings().setDisplayZoomControls(false);
-        web.setScrollBarStyle(web.SCROLLBARS_OUTSIDE_OVERLAY);
-        web.setScrollbarFadingEnabled(false);
-
-        web.loadUrl(url3);
-    }
-    public void pagina4(View view){
-        web = findViewById(R.id.webView);
-        web.setWebViewClient(new WebViewClient());
-        web.getSettings().setJavaScriptEnabled(true);
-
-        web.getSettings().setLoadWithOverviewMode(true);
-        web.getSettings().setUseWideViewPort(true);
-        web.getSettings().setSupportZoom(true);
-        web.getSettings().setBuiltInZoomControls(true);
-        web.getSettings().setDisplayZoomControls(false);
-        web.setScrollBarStyle(web.SCROLLBARS_OUTSIDE_OVERLAY);
-        web.setScrollbarFadingEnabled(false);
-
-        web.loadUrl(url4);
-    }
 
     //Método para mostrar y ocultar el menú
     public boolean onCreateOptionsMenu(Menu menu){
@@ -118,10 +50,31 @@ public class ejercicio3 extends AppCompatActivity {
             startActivity(opcion2);
             Toast.makeText(this, "Opción 2", Toast.LENGTH_SHORT).show();
         }else if(id == R.id.item3){
-            Intent opcion3 = new Intent(this, ejercicio3.class);
+
+            Intent opcion3 = new Intent(this, MainActivity.class);
+
+            entries.add(new Entry(4f,0));
+            entries.add(new Entry(6f,1));
+            entries.add(new Entry(8f,2));
+            entries.add(new Entry(10f,3));
+            entries.add(new Entry(12f,4));
+
+            labels.add("Gimnasio");
+            labels.add("Cross Fit");
+            labels.add("Yoga");
+            labels.add("Boxeo");
+            labels.add("Aerobico");
+
+            opcion3.putExtra("entries", entries);
+            opcion3.putExtra("labels", labels);
+            opcion3.putExtra("aprobacion", "1");
             startActivity(opcion3);
+
             Toast.makeText(this, "Opción 3", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
 }
